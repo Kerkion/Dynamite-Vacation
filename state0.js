@@ -13,6 +13,7 @@ demo.state0.prototype = {
 
     game.physics.startSystem(Phaser.Physics.ARCADE); 
 
+
     //scale game and alighn it
     game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     game.scale.pageAlignHorizontally = true;
@@ -71,7 +72,11 @@ demo.state0.prototype = {
 };
 
 function handleCollision(player,bomb){
-    bomb.body.velocity.y = -speed;
+    bomb.body.velocity.y = 0;
+    if(game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR) || game.input.activePointer.leftButton.isDown){
+        bomb.body.velocity.y = -speed;
+    }
+
 }
 function handleCollision1(bot,bomb){
     bomb.body.velocity.y = speed;
